@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -20,7 +22,8 @@ public class Loan {
 	@Column(name = "exp_return_date", nullable = false)
 	private LocalDate expReturnDate;
 	@Column(name = "return_date", nullable = true)
-	private LocalDate ReturnDate;
+	private LocalDate returnDate;
 	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
 	private EnumLoanStatus status;
 }
