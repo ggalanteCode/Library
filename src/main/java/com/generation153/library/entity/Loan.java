@@ -9,8 +9,18 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.extern.java.Log;
 
+@Log
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "loans")
 public class Loan {
@@ -26,4 +36,8 @@ public class Loan {
 	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private EnumLoanStatus status;
+	
+	@ManyToOne	//se non specifichiamo @OneToMany dall'altro lato, l'associazione è UNIDIREZIONALE
+	@JoinColumn(name = "user_id")	//entità proprietaria, perchè ha la fk
+	private User user;
 }
