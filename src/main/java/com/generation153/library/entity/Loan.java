@@ -37,6 +37,10 @@ public class Loan {
 	@Enumerated(EnumType.STRING)
 	private EnumLoanStatus status;
 	
+	@ManyToOne
+	@JoinColumn(name = "copy_id")
+	private Copy copy;
+	
 	@ManyToOne	//se non specifichiamo @OneToMany dall'altro lato, l'associazione è UNIDIREZIONALE
 	@JoinColumn(name = "user_id")	//entità proprietaria, perchè ha la fk
 	private User user;
